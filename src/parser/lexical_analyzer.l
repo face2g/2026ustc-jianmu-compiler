@@ -40,6 +40,82 @@ void pass_node(char *text){
  /* TODO: phase1. 请在这里补充其他的词法规则 */
 
 
+"("     { pos_start = pos_end; pos_end += 1; pass_node(yytext); return LPARENTHESE; }
+")"     { pos_start = pos_end; pos_end += 1; pass_node(yytext); return RPARENTHESE; }
+"["     { pos_start = pos_end; pos_end += 1; pass_node(yytext); return LBRACKET; }
+"]"     { pos_start = pos_end; pos_end += 1; pass_node(yytext); return RBRACKET; }
+"{"     { pos_start = pos_end; pos_end += 1; pass_node(yytext); return LBRACE; }
+"}"     { pos_start = pos_end; pos_end += 1; pass_node(yytext); return RBRACE; }
+
+"if"     { pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return IF; }
+"else"   { pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return ELSE; }
+"while"  { pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return WHILE; }
+"return" { pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return RETURN; }
+"int"    { pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return INT; }
+"float"  { pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return FLOAT; }
+"void"   { pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return VOID; }
+
+[a-zA-Z]+ {
+    pos_start = pos_end;
+    pos_end += yyleng;
+    pass_node(yytext);
+    return IDENTIFIER;
+}
+
+([0-9]+\.[0-9]*|[0-9]*\.[0-9]+) {
+    pos_start = pos_end;
+    pos_end += yyleng;
+    pass_node(yytext);
+    return FLOATPOINT;
+}
+
+[0-9]+ {
+    pos_start = pos_end;
+    pos_end += yyleng;
+    pass_node(yytext);
+    return INTEGER;
+}
+
+"/*" {
+    pos_start = pos_end;
+    pos_end += 2;
+    BEGIN(COMMENT);
+}
+
+<COMMENT>"*/" {
+    pos_start = pos_end;
+    pos_end += 2;
+    BEGIN(INITIAL);
+}
+
+<COMMENT>(\r\n|\n|\r) {
+    lines++;
+    pos_start = 1;
+    pos_end = 1;
+}
+
+<COMMENT>. {
+    pos_start = pos_end;
+    pos_end += 1;
+}
+
+<COMMENT><<EOF>> {
+    BEGIN(INITIAL);
+    return ERROR;
+}
+
+[ \t]+ {
+    pos_start = pos_end;
+    pos_end += yyleng;
+}
+
+\r\n|\n|\r {
+    lines++;
+    pos_start = 1;
+    pos_end = 1;
+}
+
+
 . { pos_start = pos_end; pos_end++; return ERROR; }
 
  /****请在此补全所有flex的模式与动作  end******/

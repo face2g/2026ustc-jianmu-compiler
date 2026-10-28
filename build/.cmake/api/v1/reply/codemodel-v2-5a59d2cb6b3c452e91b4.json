@@ -1,0 +1,406 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						8
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						9,
+						11
+					]
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src"
+				},
+				{
+					"build" : "src/parser",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src.parser-Debug-d8db9f27a11a63bbfcae.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/parser",
+					"targetIndexes" : 
+					[
+						10,
+						12,
+						17
+					]
+				},
+				{
+					"build" : "src/common",
+					"jsonFile" : "directory-src.common-Debug-26ca1aee19599f655637.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/common",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "src/logging",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src.logging-Debug-21a7d21156356e826d78.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/logging",
+					"targetIndexes" : 
+					[
+						18,
+						19
+					]
+				},
+				{
+					"build" : "src/cminusfc",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src.cminusfc-Debug-84a0d94d3fd0445583dc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/cminusfc",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "src/lightir",
+					"jsonFile" : "directory-src.lightir-Debug-da4fad8b85d82b4244f3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/lightir",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "src/io",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src.io-Debug-6cc5fa84f7ddbc1996d2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/io",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "tests",
+					"childIndexes" : 
+					[
+						9
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-tests-Debug-b01f6abb0ab61427ef3b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tests"
+				},
+				{
+					"build" : "tests/2-ir-gen/warmup",
+					"childIndexes" : 
+					[
+						10
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-tests.2-ir-gen.warmup-Debug-e55675e033250f6bbc64.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 0,
+					"source" : "tests/2-ir-gen/warmup",
+					"targetIndexes" : 
+					[
+						8,
+						13,
+						14,
+						15,
+						16
+					]
+				},
+				{
+					"build" : "tests/2-ir-gen/warmup/calculator",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-tests.2-ir-gen.warmup.calculator-Debug-a7636398cd778728c889.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 9,
+					"projectIndex" : 0,
+					"source" : "tests/2-ir-gen/warmup/calculator",
+					"targetIndexes" : 
+					[
+						3,
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					],
+					"name" : "CMINUSF",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 6,
+					"id" : "IR_lib::@c9561dcc09e3e736d762",
+					"jsonFile" : "target-IR_lib-Debug-ea3d0475069ed78d5aed.json",
+					"name" : "IR_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "RISCVTargetParserTableGen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-RISCVTargetParserTableGen-Debug-7d27470a274b8bf9ac24.json",
+					"name" : "RISCVTargetParserTableGen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "acc_gen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-acc_gen-Debug-7232450bbd29bdbd1eb8.json",
+					"name" : "acc_gen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "calc::@dcfe9f135c151a2906cc",
+					"jsonFile" : "target-calc-Debug-b51159945288b0d29f87.json",
+					"name" : "calc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "calc_syntax::@dcfe9f135c151a2906cc",
+					"jsonFile" : "target-calc_syntax-Debug-073bb5c465f97a31d72f.json",
+					"name" : "calc_syntax",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "cminus_io::@8c9074cf2e563e673ee9",
+					"jsonFile" : "target-cminus_io-Debug-12871732f769b18d2c20.json",
+					"name" : "cminus_io",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "cminusfc::@ec2797c3c79ab9a094e3",
+					"jsonFile" : "target-cminusfc-Debug-f8f096b4439cb7a60b6d.json",
+					"name" : "cminusfc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "common::@af79f3804eddddbfa7f1",
+					"jsonFile" : "target-common-Debug-f8f487f4f63044fa35c0.json",
+					"name" : "common",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "gcd_array_generator::@4e8f474054476efecc05",
+					"jsonFile" : "target-gcd_array_generator-Debug-f48c201bb2ee50843f04.json",
+					"name" : "gcd_array_generator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "intrinsics_gen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-intrinsics_gen-Debug-b7264516087d7349cc3e.json",
+					"name" : "intrinsics_gen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "lexer::@980325688ee7b2ed96bc",
+					"jsonFile" : "target-lexer-Debug-172bb1c612aecceac541.json",
+					"name" : "lexer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "omp_gen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-omp_gen-Debug-0e91db3abc473d123b1f.json",
+					"name" : "omp_gen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "parser::@980325688ee7b2ed96bc",
+					"jsonFile" : "target-parser-Debug-4bb0f81e4e4a612880d6.json",
+					"name" : "parser",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "stu_assign_generator::@4e8f474054476efecc05",
+					"jsonFile" : "target-stu_assign_generator-Debug-db14330e4e1f5fe15bb0.json",
+					"name" : "stu_assign_generator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "stu_fun_generator::@4e8f474054476efecc05",
+					"jsonFile" : "target-stu_fun_generator-Debug-94f783474cc2be02d995.json",
+					"name" : "stu_fun_generator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "stu_if_generator::@4e8f474054476efecc05",
+					"jsonFile" : "target-stu_if_generator-Debug-fcc21e61d06a2c97b695.json",
+					"name" : "stu_if_generator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "stu_while_generator::@4e8f474054476efecc05",
+					"jsonFile" : "target-stu_while_generator-Debug-429cca3279d348771d5e.json",
+					"name" : "stu_while_generator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "syntax::@980325688ee7b2ed96bc",
+					"jsonFile" : "target-syntax-Debug-c232db7445489c0966a1.json",
+					"name" : "syntax",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "test_ast::@48bfaf6ebac2073e8858",
+					"jsonFile" : "target-test_ast-Debug-bfbeaf6f2c5f2282a592.json",
+					"name" : "test_ast",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "test_logging::@48bfaf6ebac2073e8858",
+					"jsonFile" : "target-test_logging-Debug-3bb33014b9a8e4b80f72.json",
+					"name" : "test_logging",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/root/CompileLab/2026ustc-jianmu-compiler/build",
+		"source" : "/root/CompileLab/2026ustc-jianmu-compiler"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

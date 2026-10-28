@@ -103,6 +103,35 @@ ASTNode *AST::transform_node_iter(syntax_tree_node *n) {
         param-list -> param-list , param | param
     */
     // TODO: 1.fill in the fields of ASTFunDeclaration
+        /*
+     * params -> param-list | void
+     * param-list -> param-list , param | param
+     */
+    auto params_node = n->children[3];
+
+    if (_STR_EQ(params_node->children[0]->name, "param-list")) {
+      std::stack<syntax_tree_node *> s;
+      auto list_ptr = params_node->children[0];
+
+      while (list_ptr->children_num == 3) {
+        s.push(list_ptr->children[2]);
+        list_ptr = list_ptr->children[0];
+      }
+
+      s.push(list_ptr->children[0]);
+
+      while (!s.empty()) {
+        auto param_node =
+            static_cast<ASTParam *>(transform_node_iter(s.top()));
+        node->params.push_back(std::shared_ptr<ASTParam>(param_node));
+        s.pop();
+      }
+    }
+
+    auto compound_stmt = static_cast<ASTCompoundStmt *>(
+        transform_node_iter(n->children[5]));
+    node->compound_stmt =
+        std::shared_ptr<ASTCompoundStmt>(compound_stmt);
     // 1.1 flatten params
 
     // 1.2 compound_stmt 字段填充
@@ -124,6 +153,49 @@ ASTNode *AST::transform_node_iter(syntax_tree_node *n) {
   } else if (_STR_EQ(n->name, "compound-stmt")) {
     auto node = new ASTCompoundStmt();
     // TODO: 2.fill in the fields of ASTCompoundStmt
+          /*
+     * compound-stmt
+     *     -> { local-declarations statement-list }
+     */
+    auto local_list_ptr = n->children[1];
+    std::stack<syntax_tree_node *> local_stack;
+
+    while (local_list_ptr->children_num == 2) {
+      local_stack.push(local_list_ptr->children[1]);
+      local_list_ptr = local_list_ptr->children[0];
+    }
+
+    if (!_STR_EQ(local_list_ptr->children[0]->name, "epsilon")) {
+      local_stack.push(local_list_ptr->children[0]);
+    }
+
+    while (!local_stack.empty()) {
+      auto decl_node = static_cast<ASTVarDeclaration *>(
+          transform_node_iter(local_stack.top()));
+      node->local_declarations.push_back(
+          std::shared_ptr<ASTVarDeclaration>(decl_node));
+      local_stack.pop();
+    }
+
+    auto statement_list_ptr = n->children[2];
+    std::stack<syntax_tree_node *> statement_stack;
+
+    while (statement_list_ptr->children_num == 2) {
+      statement_stack.push(statement_list_ptr->children[1]);
+      statement_list_ptr = statement_list_ptr->children[0];
+    }
+
+    if (!_STR_EQ(statement_list_ptr->children[0]->name, "epsilon")) {
+      statement_stack.push(statement_list_ptr->children[0]);
+    }
+
+    while (!statement_stack.empty()) {
+      auto stmt_node = static_cast<ASTStatement *>(
+          transform_node_iter(statement_stack.top()));
+      node->statement_list.push_back(
+          std::shared_ptr<ASTStatement>(stmt_node));
+      statement_stack.pop();
+    }
     /*
       文法表达式如下
       compound-stmt -> { local-declarations statement-list }
@@ -152,6 +224,21 @@ ASTNode *AST::transform_node_iter(syntax_tree_node *n) {
   } else if (_STR_EQ(n->name, "selection-stmt")) {
     auto node = new ASTSelectionStmt();
     // TODO: 5.fill in the fields of ASTSelectionStmt
+        auto expr_node =
+        static_cast<ASTExpression *>(transform_node_iter(n->children[2]));
+    node->expression = std::shared_ptr<ASTExpression>(expr_node);
+
+    auto if_stmt_node =
+        static_cast<ASTStatement *>(transform_node_iter(n->children[4]));
+    node->if_statement =
+        std::shared_ptr<ASTStatement>(if_stmt_node);
+
+    if (n->children_num == 7) {
+      auto else_stmt_node =
+          static_cast<ASTStatement *>(transform_node_iter(n->children[6]));
+      node->else_statement =
+          std::shared_ptr<ASTStatement>(else_stmt_node);
+    }
     /*
       selection-stmt -> if ( expression ) statement | if ( expression )
       statement else statement ASTSelectionStmt的结构，需要填充的字段有
@@ -243,6 +330,23 @@ ASTNode *AST::transform_node_iter(syntax_tree_node *n) {
     auto node = new ASTAdditiveExpression();
     if (n->children_num == 3) {
       // TODO: 4.fill in the fields of ASTAdditiveExpression
+            auto left_node = static_cast<ASTAdditiveExpression *>(
+          transform_node_iter(n->children[0]));
+      node->additive_expression =
+          std::shared_ptr<ASTAdditiveExpression>(left_node);
+
+      auto op_name = n->children[1]->children[0]->name;
+      if (_STR_EQ(op_name, "+")) {
+        node->op = OP_PLUS;
+      } else if (_STR_EQ(op_name, "-")) {
+        node->op = OP_MINUS;
+      } else {
+        _AST_NODE_ERROR_
+      }
+
+      auto term_node =
+          static_cast<ASTTerm *>(transform_node_iter(n->children[2]));
+      node->term = std::shared_ptr<ASTTerm>(term_node);
       /*
         文法表达式如下
         additive-expression -> additive-expression addop term | term 
@@ -288,6 +392,17 @@ ASTNode *AST::transform_node_iter(syntax_tree_node *n) {
     else {
       auto num_node = new ASTNum();
       // TODO: 3.fill in the fields of ASTNum
+            if (_STR_EQ(name, "integer")) {
+        num_node->type = TYPE_INT;
+        num_node->i_val =
+            std::stoi(n->children[i]->children[0]->name);
+      } else if (_STR_EQ(name, "float")) {
+        num_node->type = TYPE_FLOAT;
+        num_node->f_val =
+            std::stof(n->children[i]->children[0]->name);
+      } else {
+        _AST_NODE_ERROR_
+      }
       /*
         文法表达式如下
         factor -> ( expression ) | var | call | integer | float

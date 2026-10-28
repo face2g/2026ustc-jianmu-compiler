@@ -1,0 +1,2 @@
+tests/2-ir-gen/warmup/CMakeFiles/stu_while_generator.dir/stu_cpp/while_generator.cpp.o: \
+  /root/CompileLab/2026ustc-jianmu-compiler/tests/2-ir-gen/warmup/stu_cpp/while_generator.cpp

@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+979f340b38e487a5a0de09caf6b47f79 src/parser/lexical_analyzer.c
+86b53dd621f5193acfc430f98be85e3d src/parser/syntax_analyzer.c
+608897ea86f25097b0a3601fcf7031ae tests/2-ir-gen/warmup/calculator/calc_lex.c
+de934b8d1326454d391100f009709ab9 tests/2-ir-gen/warmup/calculator/calc_syntax.c
